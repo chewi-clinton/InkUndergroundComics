@@ -205,7 +205,6 @@
   text-transform: uppercase;
 }
 
-/* Mobile Responsive - 2 books per row */
 @media (max-width: 768px) {
   .comics-section {
     gap: 15px;

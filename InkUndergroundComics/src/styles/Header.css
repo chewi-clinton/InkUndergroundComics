@@ -37,6 +37,7 @@
 .nav-menu {
   display: flex;
   gap: 30px;
+  align-items: center;
 }
 
 .nav-link {
@@ -46,17 +47,20 @@
   font-size: 14px;
   font-weight: 500;
   letter-spacing: 1px;
-  transition: background-color 0.3s ease;
+  transition: color 0.3s ease, transform 0.3s ease;
   padding: 5px 10px;
   border-radius: 4px;
+  display: inline-block;
 }
 
 .nav-link:hover {
-  background-color: rgba(255, 255, 255, 0.7);
+  color: #6a0dad;
+  transform: translateY(-2px);
 }
 
 .dropdown-container {
   position: relative;
+  display: inline-block;
 }
 
 .dropdown-toggle {
@@ -70,11 +74,39 @@
   cursor: pointer;
   padding: 5px 10px;
   border-radius: 4px;
-  transition: background-color 0.3s ease;
+  transition: color 0.3s ease, transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .dropdown-toggle:hover {
-  background-color: rgba(255, 255, 255, 0.7);
+  color: #6a0dad;
+  transform: translateY(-2px);
+}
+
+.dropdown-toggle:hover .dropdown-arrow {
+  color: #6a0dad;
+}
+
+.dropdown-container:hover .dropdown-toggle {
+  color: #6a0dad;
+  transform: translateY(-2px);
+}
+
+.dropdown-container:hover .dropdown-arrow {
+  color: #6a0dad;
+}
+
+.dropdown-arrow {
+  font-size: 10px;
+  color: #000000;
+  transition: color 0.3s ease, transform 0.3s ease;
+  margin-left: 3px;
+}
+
+.dropdown-container:hover .dropdown-arrow {
+  transform: rotate(180deg);
 }
 
 .dropdown-menu {
@@ -105,11 +137,13 @@
   padding: 10px 15px;
   font-family: "Arial", sans-serif;
   font-size: 14px;
-  transition: background-color 0.3s ease;
+  transition: color 0.3s ease, transform 0.3s ease;
+  display: block;
 }
 
 .dropdown-item:hover {
-  background-color: rgba(255, 255, 255, 0.7);
+  color: #6a0dad;
+  transform: translateX(5px);
 }
 
 .social-icons {
@@ -119,17 +153,17 @@
 
 .social-icon {
   display: flex;
-
   align-items: center;
   justify-content: center;
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  transition: background-color 0.3s ease;
+  transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 .social-icon:hover {
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(106, 13, 173, 0.1);
+  transform: scale(1.1);
 }
 
 .social-icon img {
@@ -149,6 +183,11 @@
   border: none;
   cursor: pointer;
   z-index: 20;
+  transition: transform 0.3s ease;
+}
+
+.hamburger-menu:hover {
+  transform: scale(1.05);
 }
 
 .hamburger-line {
@@ -156,6 +195,11 @@
   height: 3px;
   background-color: #000000;
   border-radius: 3px;
+  transition: background-color 0.3s ease;
+}
+
+.hamburger-menu:hover .hamburger-line {
+  background-color: #6a0dad;
 }
 
 /* Mobile menu styles */
@@ -182,11 +226,13 @@
   font-weight: 500;
   padding: 5px 10px;
   border-radius: 4px;
-  transition: background-color 0.3s ease;
+  transition: color 0.3s ease, transform 0.3s ease;
+  display: block;
 }
 
 .mobile-nav-link:hover {
-  background-color: rgba(255, 255, 255, 0.7);
+  color: #6a0dad;
+  transform: translateX(5px);
 }
 
 .mobile-dropdown-container {
@@ -205,11 +251,19 @@
   padding: 5px 10px;
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: color 0.3s ease, transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .mobile-dropdown-toggle:hover {
-  background-color: rgba(255, 255, 255, 0.7);
+  color: #6a0dad;
+  transform: translateX(5px);
+}
+
+.mobile-dropdown-toggle:hover .dropdown-arrow {
+  color: #6a0dad;
 }
 
 .mobile-dropdown-menu {
@@ -226,11 +280,13 @@
   font-family: "Arial", sans-serif;
   font-size: 14px;
   border-radius: 4px;
-  transition: background-color 0.3s ease;
+  transition: color 0.3s ease, transform 0.3s ease;
+  display: block;
 }
 
 .mobile-dropdown-item:hover {
-  background-color: rgba(255, 255, 255, 0.7);
+  color: #6a0dad;
+  transform: translateX(5px);
 }
 
 @media (max-width: 768px) {

@@ -1,4 +1,3 @@
-// Header.jsx
 import React, { useState } from "react";
 import "../styles/Header.css";
 import logo from "../assets/logo.png";
@@ -58,8 +57,11 @@ const Header = () => {
           <a href="#" className="nav-link">
             NEW RELEASES
           </a>
-          <div className="nav-link dropdown-container">
-            <button className="dropdown-toggle">COMICS</button>
+          <div className="dropdown-container">
+            <button className="dropdown-toggle">
+              COMICS
+              <span className="dropdown-arrow">▼</span>
+            </button>
             <div className="dropdown-menu">
               <a href="#" className="dropdown-item">
                 First Issue
@@ -105,6 +107,7 @@ const Header = () => {
                 onClick={toggleMobileComicsDropdown}
               >
                 COMICS
+                <span className="dropdown-arrow">▼</span>
               </button>
               {isMobileComicsDropdownOpen && (
                 <div className="mobile-dropdown-menu">
