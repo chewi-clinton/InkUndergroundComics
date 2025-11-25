@@ -139,8 +139,8 @@ const HomePage = () => {
             className="news-image"
           />
           <p className="news-description">
-            **Raw talent on the rise with RENEGADE, 100% hand drawn launching
-            March 1st 2026**
+            Raw talent on the rise with RENEGADE, 100% hand drawn launching
+            March 1st 2026
           </p>
           <p className="news-date">December 21, 2025</p>
         </div>
@@ -151,8 +151,8 @@ const HomePage = () => {
             className="news-image"
           />
           <p className="news-description">
-            **First look at Mark of Ninja, which brings together the ideas of
-            two tops creators in the underground**
+            First look at Mark of Ninja, which brings together the ideas of two
+            tops creators in the underground
           </p>
           <p className="news-date">December 29, 2025</p>
         </div>
