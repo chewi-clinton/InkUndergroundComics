@@ -126,6 +126,9 @@ const Header = () => {
             <a href="#" className="mobile-nav-link">
               MERCH
             </a>
+            <a href="#" className="mobile-nav-link">
+              COMMUNITY
+            </a>
           </nav>
 
           <SocialIcons className="mobile-social-icons" />

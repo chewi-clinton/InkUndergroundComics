@@ -4,12 +4,13 @@ import Character from "./pages/CharacterPage";
 import "./App.css";
 import ComicPage from "./pages/ComicPage";
 import CharacterDetailPage from "./pages/CharacterDetailPage";
+import CommunityPage from "./pages/CommunityPage";
 
 function App() {
   return (
     <>
       <Header />
-      <CharacterDetailPage />
+      <CommunityPage />
       <Footer />
     </>
   );
