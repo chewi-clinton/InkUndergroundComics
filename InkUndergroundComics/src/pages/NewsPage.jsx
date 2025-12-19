@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/NewsPage.css";
 
 // Using your existing images as placeholders
@@ -47,8 +47,32 @@ const NEWS_ITEMS = [
 ];
 
 const NewsPage = () => {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  // Sync with theme from localStorage and listen for changes
+  useEffect(() => {
+    // Initial theme check
+    const savedTheme = localStorage.getItem("theme");
+    const htmlTheme = document.documentElement.getAttribute("data-theme");
+    setIsDarkMode(savedTheme === "dark" || htmlTheme === "dark");
+
+    // Observer for data-theme attribute changes
+    const handleThemeChange = () => {
+      const currentTheme = document.documentElement.getAttribute("data-theme");
+      setIsDarkMode(currentTheme === "dark");
+    };
+
+    const observer = new MutationObserver(handleThemeChange);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="np-container">
+    <div className={`np-container ${isDarkMode ? "dark-theme" : ""}`}>
       {/* Breadcrumbs */}
       <nav className="np-breadcrumbs">
         HOME <span className="np-slash">/</span>{" "}
@@ -63,7 +87,6 @@ const NewsPage = () => {
             <div className="np-image-wrapper">
               <img src={item.image} alt="News" className="np-img" />
             </div>
-
             <div className="np-content">
               <span className="np-date">{item.date}</span>
               <h2 className="np-item-title">{item.title}</h2>

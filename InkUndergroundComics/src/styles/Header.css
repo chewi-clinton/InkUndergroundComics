@@ -1,4 +1,4 @@
-/* Header.css - Updated with Dark Mode Support */
+/* Header.css - Updated WITHOUT Social Icons */
 
 /* CSS Variables for theming */
 :root {
@@ -204,33 +204,6 @@
   transition: transform 0.3s ease;
 }
 
-.social-icons {
-  display: flex;
-  gap: 15px;
-}
-
-.social-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  transition: transform 0.3s ease, background-color 0.3s ease;
-}
-
-.social-icon:hover {
-  background-color: var(--hover-bg);
-  transform: scale(1.1);
-}
-
-.social-icon img {
-  max-width: 24px;
-  max-height: 24px;
-  width: auto;
-  height: auto;
-}
-
 .hamburger-menu {
   display: none;
   flex-direction: column;
@@ -268,6 +241,15 @@
   padding: 20px;
   box-shadow: 0 2px 5px var(--shadow);
   transition: background-color 0.3s ease;
+}
+
+/* Mobile theme toggle container */
+.mobile-theme-toggle-container {
+  display: flex;
+  justify-content: center;
+  padding: 15px 0;
+  border-top: 1px solid var(--shadow);
+  margin-top: 10px;
 }
 
 .mobile-nav {
@@ -353,6 +335,7 @@
     display: none;
   }
 
+  /* Hide header-actions on mobile */
   .header-actions {
     display: none;
   }
@@ -366,17 +349,11 @@
   }
 
   .brand-text {
-    font-size: 18px;
+    font-size: 14px;
   }
 
   .arrow-icon {
-    height: 50px;
-  }
-
-  /* Show theme toggle in mobile menu */
-  .mobile-menu .theme-toggle {
-    align-self: flex-start;
-    margin-bottom: 15px;
+    height: 45px;
   }
 }
 

@@ -1,6 +1,11 @@
+// Footer.jsx - Updated with Social Icons
 import React from "react";
 import "../styles/Footer.css";
 import logo from "../assets/logo.png";
+import facebook from "../assets/facebook.jpg";
+import instagram from "../assets/instagram.jpg";
+import twitter from "../assets/twitter.jpg";
+import youtube from "../assets/youtube.jpg";
 
 const Footer = () => {
   return (
@@ -8,7 +13,7 @@ const Footer = () => {
       <div className="footer-content">
         {/* --- Column 1: Branding & Copyright --- */}
         <div className="footer-section branding">
-          {/* UPDATED: Logo Image + Text Side-by-Side */}
+          {/* Logo Image + Text Side-by-Side */}
           <div className="logo-wrapper">
             <img
               src={logo}
@@ -27,6 +32,42 @@ const Footer = () => {
             or their respective owners. Ink Underground Comics and its logos are
             ® and © 2025 Ink Underground Comics, Inc. All rights reserved.
           </p>
+
+          {/* Social Icons */}
+          <div className="footer-social-icons">
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noreferrer"
+              className="footer-social-icon"
+            >
+              <img src={instagram} alt="Instagram" />
+            </a>
+            <a
+              href="https://twitter.com"
+              target="_blank"
+              rel="noreferrer"
+              className="footer-social-icon"
+            >
+              <img src={twitter} alt="Twitter" />
+            </a>
+            <a
+              href="https://facebook.com"
+              target="_blank"
+              rel="noreferrer"
+              className="footer-social-icon"
+            >
+              <img src={facebook} alt="Facebook" />
+            </a>
+            <a
+              href="https://youtube.com"
+              target="_blank"
+              rel="noreferrer"
+              className="footer-social-icon"
+            >
+              <img src={youtube} alt="YouTube" />
+            </a>
+          </div>
         </div>
 
         {/* Vertical Divider */}

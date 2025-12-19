@@ -16,6 +16,29 @@ const AUTO_SLIDE_INTERVAL = 3000;
 const HomePage = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [expandedComic, setExpandedComic] = useState(null);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  // Sync with theme from localStorage and listen for changes
+  useEffect(() => {
+    // Initial theme check
+    const savedTheme = localStorage.getItem("theme");
+    const htmlTheme = document.documentElement.getAttribute("data-theme");
+    setIsDarkMode(savedTheme === "dark" || htmlTheme === "dark");
+
+    // Observer for data-theme attribute changes
+    const handleThemeChange = () => {
+      const currentTheme = document.documentElement.getAttribute("data-theme");
+      setIsDarkMode(currentTheme === "dark");
+    };
+
+    const observer = new MutationObserver(handleThemeChange);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -66,7 +89,7 @@ const HomePage = () => {
   ];
 
   return (
-    <div className="home-page">
+    <div className={`home-page ${isDarkMode ? "dark-theme" : ""}`}>
       {/* Slider */}
       <div className="slider-container">
         <div

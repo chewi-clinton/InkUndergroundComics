@@ -1,11 +1,47 @@
 @import url("https://fonts.googleapis.com/css2?family=Cabin+Condensed:wght@400;700;900&display=swap");
 
+/* CSS Variables for theming */
+:root {
+  --bg-primary: #ffffff;
+  --bg-dark: #000000;
+  --bg-card: #f5f5f5;
+  --bg-circle: #e0e0e0;
+  --text-primary: #000000;
+  --text-light: #ffffff;
+  --text-secondary: #cccccc;
+  --text-muted: #888888;
+  --text-hover: #6a0dad;
+  --border-color: #e0e0e0;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --purple-primary: #6a0dad;
+  --purple-light: #9e47ff;
+  --overlay-gradient: linear-gradient(to top, #000 0%, transparent 70%);
+}
+
+[data-theme="dark"] {
+  --bg-primary: #1a1a1a;
+  --bg-dark: #0a0a0a;
+  --bg-card: #1a1a1a;
+  --bg-circle: #2d2d2d;
+  --text-primary: #ffffff;
+  --text-light: #ffffff;
+  --text-secondary: #cccccc;
+  --text-muted: #888888;
+  --text-hover: #b380ff;
+  --border-color: #333333;
+  --shadow: rgba(0, 0, 0, 0.5);
+  --purple-primary: #b380ff;
+  --purple-light: #c399ff;
+  --overlay-gradient: linear-gradient(to top, #0a0a0a 0%, transparent 70%);
+}
+
 .cov-main-wrapper {
   font-family: "Cabin Condensed", sans-serif;
-  background-color: #000;
-  color: #fff;
+  background-color: var(--bg-dark);
+  color: var(--text-light);
   width: 100%;
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* --- Hero Section --- */
@@ -19,58 +55,77 @@
 .cov-hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, #000 0%, transparent 70%);
+  background: var(--overlay-gradient);
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
   padding: 40px 10%;
+  transition: background 0.3s ease;
 }
 
 .cov-hero-content {
   text-align: right;
 }
+
 .cov-creator-tag {
   font-size: 1.2rem;
   margin: 0;
-  color: #ccc;
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
 }
+
 .cov-creators {
   font-size: 2.5rem;
   font-weight: 900;
   margin: 0;
+  color: var(--text-light);
+  transition: color 0.3s ease;
 }
 
 /* --- Content Container --- */
 .cov-dark-container {
   padding: 20px 10% 80px;
+  transition: background-color 0.3s ease;
 }
 
 .cov-info-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid var(--border-color);
   padding-bottom: 15px;
   margin-bottom: 50px;
+  transition: border-color 0.3s ease;
 }
 
 .cov-main-title {
   font-size: 2.5rem;
   font-weight: 900;
   margin: 0;
+  color: var(--text-light);
+  transition: color 0.3s ease;
 }
+
 .cov-tab-group {
   display: flex;
   gap: 20px;
 }
+
 .cov-tab {
-  color: #888;
+  color: var(--text-muted);
   text-decoration: none;
   font-weight: 700;
+  transition: color 0.3s ease;
+  cursor: pointer;
 }
+
+.cov-tab:hover {
+  color: var(--text-light);
+}
+
 .cov-tab.active {
-  color: #fff;
-  border-bottom: 3px solid #6a0dad;
+  color: var(--text-light);
+  border-bottom: 3px solid var(--purple-primary);
   padding-bottom: 12px;
 }
 
@@ -87,15 +142,19 @@
   font-size: 1.5rem;
   font-weight: 900;
   margin-bottom: 20px;
+  color: var(--text-light);
+  transition: color 0.3s ease;
 }
 
 .cov-bio-column {
   flex: 1.5;
 }
+
 .cov-bio-text {
-  color: #ccc;
+  color: var(--text-secondary);
   line-height: 1.6;
   font-size: 1rem;
+  transition: color 0.3s ease;
 }
 
 .cov-logo-column {
@@ -108,17 +167,23 @@
 .cov-round-logo-wrapper {
   width: 250px;
   height: 250px;
-  background-color: #333;
+  background-color: var(--bg-circle);
   border-radius: 50%;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 15px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 8px var(--shadow);
+}
+
+.cov-round-logo-wrapper:hover {
+  box-shadow: 0 8px 16px var(--shadow);
 }
 
 .cov-round-img {
-  width: 70%; /* Smaller than wrapper to avoid yellow corner icons */
+  width: 70%;
   height: auto;
   object-fit: contain;
 }
@@ -126,13 +191,15 @@
 .cov-team-name {
   font-weight: bold;
   font-size: 0.9rem;
-  color: #888;
+  color: var(--text-muted);
+  transition: color 0.3s ease;
 }
 
 .cov-social-column {
   flex: 1;
   text-align: right;
 }
+
 .cov-social-grid {
   display: flex;
   flex-wrap: wrap;
@@ -145,11 +212,13 @@
   height: 35px;
   border-radius: 50%;
   cursor: pointer;
-  transition: transform 0.2s;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 4px var(--shadow);
 }
 
 .cov-social-icon:hover {
   transform: scale(1.1);
+  box-shadow: 0 4px 8px var(--shadow);
 }
 
 /* --- More By Creators --- */
@@ -162,8 +231,16 @@
 
 .cov-more-placeholder {
   aspect-ratio: 2/3;
-  background-color: #1a1a1a;
+  background-color: var(--bg-card);
   border-radius: 4px;
+  transition: background-color 0.3s ease, transform 0.3s ease,
+    box-shadow 0.3s ease;
+  box-shadow: 0 2px 4px var(--shadow);
+}
+
+.cov-more-placeholder:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px var(--shadow);
 }
 
 /* Responsive */
@@ -173,13 +250,50 @@
     align-items: center;
     text-align: center;
   }
+
   .cov-social-grid {
     justify-content: center;
   }
+
   .cov-social-column {
     text-align: center;
   }
+
   .cov-more-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cov-info-bar {
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .cov-tab-group {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 600px) {
+  .cov-hero-section {
+    height: 350px;
+  }
+
+  .cov-main-title {
+    font-size: 2rem;
+  }
+
+  .cov-creators {
+    font-size: 2rem;
+  }
+
+  .cov-round-logo-wrapper {
+    width: 200px;
+    height: 200px;
+  }
+
+  .cov-more-grid {
+    grid-template-columns: 1fr;
   }
 }

@@ -2,13 +2,41 @@
 
 .comic-page-container {
   font-family: "Cabin Condensed", sans-serif;
-  background-color: #fff;
+  background-color: var(--bg-main);
   width: 100%;
+
+  /* Light mode variables (default) */
+  --bg-main: #fff;
+  --bg-banner: #6a0dad;
+  --bg-card: #fff;
+  --text-primary: #000;
+  --text-secondary: #777;
+  --text-accent: #6a0dad;
+  --text-light-purple: #9e47ff;
+  --border-color: #eee;
+  --input-bg: #e0e0e0;
+  --input-text: #333;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Dark mode */
+.comic-page-container.dark-theme {
+  --bg-main: #0a0a0a;
+  --bg-banner: #4a0a8d;
+  --bg-card: #1a1a1a;
+  --text-primary: #ffffff;
+  --text-secondary: #aaa;
+  --text-accent: #b380ff;
+  --text-light-purple: #d4a5ff;
+  --border-color: #333;
+  --input-bg: #2a2a2a;
+  --input-text: #fff;
+  --shadow-color: rgba(0, 0, 0, 0.3);
 }
 
 /* --- Top Banner Styles --- */
 .cmp-banner {
-  background-color: #6a0dad; /* Deep Purple */
+  background-color: var(--bg-banner);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -47,7 +75,7 @@
 }
 
 .cmp-text-purple {
-  color: #9e47ff; /* Lighter purple for "CHARACTER" */
+  color: var(--text-light-purple);
   font-size: 2.5rem;
   font-weight: 900;
   margin: 0;
@@ -56,7 +84,7 @@
 .cmp-text-huge {
   font-size: 5rem;
   font-weight: 900;
-  color: #000; /* Black text */
+  color: var(--text-primary);
   margin: 0;
   text-transform: uppercase;
 }
@@ -68,7 +96,7 @@
 }
 
 .cmp-text-nominees {
-  color: #9e47ff;
+  color: var(--text-light-purple);
   font-size: 2rem;
   font-weight: 700;
   margin: 0;
@@ -132,13 +160,13 @@
   justify-content: space-between;
   align-items: center;
   padding: 15px 40px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .cmp-breadcrumbs {
   font-size: 0.9rem;
   font-weight: 700;
-  color: #6a0dad;
+  color: var(--text-accent);
 }
 
 .cmp-crumb-link {
@@ -147,11 +175,11 @@
 
 .cmp-crumb-slash {
   margin: 0 10px;
-  color: #999;
+  color: var(--text-secondary);
 }
 
 .cmp-crumb-current {
-  color: #333;
+  color: var(--text-primary);
 }
 
 .cmp-search-container {
@@ -162,16 +190,16 @@
 .cmp-search-input {
   width: 100%;
   padding: 10px 10px 10px 35px; /* Padding left for icon */
-  background-color: #e0e0e0; /* Light gray bg */
+  background-color: var(--input-bg);
   border: none;
   border-radius: 4px;
   font-family: inherit;
   font-size: 1rem;
-  color: #333;
+  color: var(--input-text);
 }
 
 .cmp-search-input::placeholder {
-  color: #888;
+  color: var(--text-secondary);
 }
 
 .cmp-search-icon {
@@ -179,7 +207,7 @@
   left: 10px;
   top: 50%;
   transform: translateY(-50%);
-  color: #888;
+  color: var(--text-secondary);
   font-size: 1.2rem;
 }
 
@@ -203,7 +231,7 @@
   width: 100%;
   aspect-ratio: 2 / 3; /* Comic book ratio */
   overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px var(--shadow-color);
   margin-bottom: 10px;
 }
 
@@ -227,14 +255,14 @@
 .cmp-card-title {
   font-size: 1rem;
   font-weight: 800;
-  color: #6a0dad; /* Purple title */
+  color: var(--text-accent);
   margin: 5px 0;
   text-transform: uppercase;
 }
 
 .cmp-card-date {
   font-size: 0.75rem;
-  color: #777;
+  color: var(--text-secondary);
   line-height: 1.4;
   margin: 0 0 10px 0;
   display: -webkit-box;
@@ -247,7 +275,7 @@
   align-self: flex-end;
   font-size: 0.8rem;
   font-weight: bold;
-  color: #6a0dad;
+  color: var(--text-accent);
   cursor: pointer;
 }
 

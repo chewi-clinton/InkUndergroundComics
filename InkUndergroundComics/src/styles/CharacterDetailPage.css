@@ -1,10 +1,34 @@
 @import url("https://fonts.googleapis.com/css2?family=Cabin+Condensed:wght@400;700;900&display=swap");
 
+/* CSS Variables for theming - reuse from Header/Footer */
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #eeeeee;
+  --text-primary: #000000;
+  --text-secondary: #333333;
+  --text-muted: #ccc;
+  --text-hover: #6a0dad;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --hover-bg: rgba(106, 13, 173, 0.1);
+}
+
+[data-theme="dark"] {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --text-primary: #ffffff;
+  --text-secondary: #e0e0e0;
+  --text-muted: #666;
+  --text-hover: #b380ff;
+  --shadow: rgba(0, 0, 0, 0.5);
+  --hover-bg: rgba(179, 128, 255, 0.1);
+}
+
 .cdp-container {
   font-family: "Cabin Condensed", sans-serif;
-  background-color: #ffffff;
+  background-color: var(--bg-primary);
   width: 100%;
-  color: #000;
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* --- Breadcrumbs --- */
@@ -12,16 +36,19 @@
   padding: 20px 5%;
   font-size: 0.75rem;
   font-weight: bold;
-  color: #6a0dad; /* Purple theme */
+  color: var(--text-hover);
+  transition: color 0.3s ease;
 }
 
 .cdp-slash {
   margin: 0 5px;
-  color: #ccc;
+  color: var(--text-muted);
+  transition: color 0.3s ease;
 }
 
 .cdp-current {
-  color: #000;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
 }
 
 /* --- Profile Section --- */
@@ -34,7 +61,8 @@
 
 .cdp-profile-image-container {
   flex: 0 0 350px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 20px var(--shadow);
+  transition: box-shadow 0.3s ease;
 }
 
 .cdp-main-img {
@@ -51,20 +79,24 @@
   font-weight: 900;
   margin: 0 0 20px 0;
   line-height: 1;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
 }
 
 .cdp-hero-bio {
   font-size: 1.1rem;
   line-height: 1.4;
-  color: #333;
+  color: var(--text-secondary);
   font-weight: 400;
+  transition: color 0.3s ease;
 }
 
 /* --- Facts Banner --- */
 .cdp-facts-banner {
-  background-color: #eeeeee; /* Light grey banner */
+  background-color: var(--bg-secondary);
   padding: 40px 5%;
   margin-bottom: 50px;
+  transition: background-color 0.3s ease;
 }
 
 .cdp-section-title {
@@ -72,15 +104,20 @@
   font-weight: 900;
   text-transform: uppercase;
   margin: 0 0 25px 0;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
 }
 
 .cdp-fact-item {
   font-size: 1.3rem;
   margin-bottom: 15px;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
 }
 
 .cdp-fact-item strong {
   margin-right: 10px;
+  color: var(--text-primary);
 }
 
 /* --- Related Characters --- */
@@ -96,6 +133,11 @@
 
 .cdp-related-card {
   text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.cdp-related-card:hover {
+  transform: translateY(-5px);
 }
 
 .cdp-related-img-wrapper {
@@ -103,6 +145,12 @@
   aspect-ratio: 3/4;
   overflow: hidden;
   margin-bottom: 10px;
+  box-shadow: 0 4px 8px var(--shadow);
+  transition: box-shadow 0.3s ease;
+}
+
+.cdp-related-card:hover .cdp-related-img-wrapper {
+  box-shadow: 0 8px 16px var(--shadow);
 }
 
 .cdp-related-img {
@@ -121,6 +169,12 @@
   font-weight: 900;
   margin: 0;
   text-transform: uppercase;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+.cdp-related-name:hover {
+  color: var(--text-hover);
 }
 
 /* --- Responsive Layout --- */

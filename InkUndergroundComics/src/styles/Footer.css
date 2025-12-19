@@ -1,13 +1,16 @@
+/* Footer.css - Updated with Social Icons and Dark Mode Support */
+
 .footer-container {
   width: 100%;
   padding: 40px 20px;
-  background-color: #ffffff;
-  color: #000000;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
   font-family: "Arial Black", Arial, sans-serif;
   display: flex;
   justify-content: center;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid var(--shadow);
   margin-top: auto;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .footer-content {
@@ -44,17 +47,20 @@
   line-height: 0.85;
   font-family: "Impact", "Arial Black", sans-serif;
   text-transform: uppercase;
-  color: #000;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
 }
 
 .brand-ink {
   font-size: 24px;
   letter-spacing: 1px;
 }
+
 .brand-underground {
   font-size: 28px;
   font-weight: 900;
 }
+
 .brand-comics {
   font-size: 28px;
   font-weight: 900;
@@ -64,9 +70,41 @@
   font-family: Arial, sans-serif;
   font-size: 12px;
   line-height: 1.5;
-  color: #333;
+  color: var(--text-primary);
+  opacity: 0.8;
   font-weight: 400;
   margin-top: 10px;
+  transition: color 0.3s ease;
+}
+
+/* Social Icons in Footer */
+.footer-social-icons {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.footer-social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  background-color: transparent;
+}
+
+.footer-social-icon:hover {
+  background-color: var(--hover-bg);
+  transform: scale(1.1);
+}
+
+.footer-social-icon img {
+  max-width: 28px;
+  max-height: 28px;
+  width: auto;
+  height: auto;
 }
 
 .vertical-line {
@@ -74,6 +112,11 @@
   background-color: #999;
   align-self: stretch;
   margin: 0 20px;
+  transition: background-color 0.3s ease;
+}
+
+[data-theme="dark"] .vertical-line {
+  background-color: #666;
 }
 
 .footer-section.links {
@@ -93,17 +136,17 @@
 
 .footer-section.links a {
   text-decoration: none;
-  color: #000;
+  color: var(--text-primary);
   font-weight: 700;
   font-family: Arial, sans-serif;
   font-size: 14px;
-  transition: color 0.2s ease;
+  transition: color 0.2s ease, border-color 0.2s ease;
   border-bottom: 1px solid transparent;
 }
 
 .footer-section.links a:hover {
-  color: #6a0dad;
-  border-bottom: 1px solid #6a0dad;
+  color: var(--text-hover);
+  border-bottom: 1px solid var(--text-hover);
 }
 
 @media (max-width: 768px) {
@@ -125,6 +168,10 @@
 
   .logo-text {
     align-items: center;
+  }
+
+  .footer-social-icons {
+    justify-content: center;
   }
 
   .vertical-line {

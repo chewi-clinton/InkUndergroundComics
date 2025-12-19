@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/ComicPage.css";
 
 // --- PLACEHOLDER IMAGES (Reusing from previous code) ---
@@ -89,8 +89,32 @@ const COMIC_DATA = [
 ];
 
 const ComicPage = () => {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  // Sync with theme from localStorage and listen for changes
+  useEffect(() => {
+    // Initial theme check
+    const savedTheme = localStorage.getItem("theme");
+    const htmlTheme = document.documentElement.getAttribute("data-theme");
+    setIsDarkMode(savedTheme === "dark" || htmlTheme === "dark");
+
+    // Observer for data-theme attribute changes
+    const handleThemeChange = () => {
+      const currentTheme = document.documentElement.getAttribute("data-theme");
+      setIsDarkMode(currentTheme === "dark");
+    };
+
+    const observer = new MutationObserver(handleThemeChange);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="comic-page-container">
+    <div className={`comic-page-container ${isDarkMode ? "dark-theme" : ""}`}>
       {/* --- Top Banner Section --- */}
       <header className="cmp-banner">
         {/* Left side text and arrow logo */}

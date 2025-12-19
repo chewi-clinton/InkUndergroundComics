@@ -1,10 +1,34 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/CommunityPage.css";
 
 // Using existing image imports as placeholders for the banner background
 import bannerBg from "../assets/instagram.jpg";
 
 const CommunityPage = () => {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  // Sync with theme from localStorage and listen for changes
+  useEffect(() => {
+    // Initial theme check
+    const savedTheme = localStorage.getItem("theme");
+    const htmlTheme = document.documentElement.getAttribute("data-theme");
+    setIsDarkMode(savedTheme === "dark" || htmlTheme === "dark");
+
+    // Observer for data-theme attribute changes
+    const handleThemeChange = () => {
+      const currentTheme = document.documentElement.getAttribute("data-theme");
+      setIsDarkMode(currentTheme === "dark");
+    };
+
+    const observer = new MutationObserver(handleThemeChange);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   const guidelines = [
     "Be respectful and kind to all community members",
     "Share your love for comics and creativity",
@@ -15,7 +39,7 @@ const CommunityPage = () => {
   ];
 
   return (
-    <div className="com-page-container">
+    <div className={`com-page-container ${isDarkMode ? "dark-theme" : ""}`}>
       {/* --- Purple Hero Banner --- */}
       <div
         className="com-hero-banner"
