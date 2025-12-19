@@ -5,6 +5,9 @@
   margin: 0 auto;
   padding: 0 10px;
   background-color: var(--bg-main);
+  min-height: 100vh; /* Add this to fill the screen */
+  display: flex; /* Helps manage vertical spacing */
+  flex-direction: column;
 
   /* Light mode variables (default) */
   --bg-main: #fff;

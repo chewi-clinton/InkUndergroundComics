@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom"; // Navigation hook
 import "../styles/Home.css";
 
+// Assets
 import sliderImg1 from "../assets/instagram.jpg";
 import sliderImg2 from "../assets/twitter.jpg";
 import sliderImg3 from "../assets/youtube.jpg";
@@ -14,18 +16,19 @@ const SLIDE_IMAGES = [sliderImg1, sliderImg2, sliderImg3];
 const AUTO_SLIDE_INTERVAL = 3000;
 
 const HomePage = () => {
+  const navigate = useNavigate(); // Initialize navigation
   const [currentIndex, setCurrentIndex] = useState(0);
   const [expandedComic, setExpandedComic] = useState(null);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
-  // Sync with theme from localStorage and listen for changes
+  // --- Theme Sync Logic ---
   useEffect(() => {
     // Initial theme check
     const savedTheme = localStorage.getItem("theme");
     const htmlTheme = document.documentElement.getAttribute("data-theme");
     setIsDarkMode(savedTheme === "dark" || htmlTheme === "dark");
 
-    // Observer for data-theme attribute changes
+    // Observer for data-theme attribute changes (triggered by Header toggle)
     const handleThemeChange = () => {
       const currentTheme = document.documentElement.getAttribute("data-theme");
       setIsDarkMode(currentTheme === "dark");
@@ -40,6 +43,7 @@ const HomePage = () => {
     return () => observer.disconnect();
   }, []);
 
+  // --- Auto-Slider Logic ---
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentIndex((prev) =>
@@ -64,7 +68,7 @@ const HomePage = () => {
       excerpt:
         "Strange Places, published May 18, 1956, during the darkest war we all hope to see. Save was launched in the backrooms, and lets see how far that",
       additionalText:
-        " journey takes us. This issue explores the depths of supernatural mysteries and ancient prophecies that have haunted humanity for generations. Join Hellboy as he ventures into uncharted territories filled with danger and discovery.",
+        " journey takes us. This issue explores the depths of supernatural mysteries and ancient prophecies that have haunted humanity for generations.",
     },
     {
       id: 2,
@@ -74,7 +78,7 @@ const HomePage = () => {
       excerpt:
         "Strange Places, published May 18, 1956, during the darkest war we all hope to see. Save was launched in the backrooms, and lets see how far that",
       additionalText:
-        " takes the heroes. A groundbreaking series that reimagines the superhero genre with raw realism and psychological depth. Watch as ordinary people struggle with extraordinary abilities in a world that fears them.",
+        " takes the heroes. A groundbreaking series that reimagines the superhero genre with raw realism and psychological depth.",
     },
     {
       id: 3,
@@ -84,13 +88,13 @@ const HomePage = () => {
       excerpt:
         "Strange Places, published May 19, 1956, during the darkest war we all hope to see. Save was launched in the backrooms, and lets see how far that",
       additionalText:
-        " epic story unfolds. Al Simmons returns from the dead as a Hellspawn, caught between the forces of Heaven and Hell. His quest for redemption and revenge will shake the foundations of both worlds.",
+        " epic story unfolds. Al Simmons returns from the dead as a Hellspawn, caught between the forces of Heaven and Hell.",
     },
   ];
 
   return (
     <div className={`home-page ${isDarkMode ? "dark-theme" : ""}`}>
-      {/* Slider */}
+      {/* Hero Slider */}
       <div className="slider-container">
         <div
           className="slider-track"
@@ -104,8 +108,10 @@ const HomePage = () => {
         </div>
       </div>
 
-      {/* Purple Banner with Dots directly underneath */}
+      {/* Purple Call-to-Action Banner */}
       <div className="top-banner">Read ARACHNID #1 for free!</div>
+
+      {/* Pagination Dots */}
       <div className="slider-dots-wrapper">
         <div className="slider-dots">
           {SLIDE_IMAGES.map((_, i) => (
@@ -119,7 +125,7 @@ const HomePage = () => {
         </div>
       </div>
 
-      {/* Free Comic Issues */}
+      {/* Free Comics Section */}
       <h2 className="section-title">free comic issues!</h2>
       <div className="comics-section">
         {comicsData.map((comic) => (
@@ -153,14 +159,11 @@ const HomePage = () => {
         ))}
       </div>
 
+      {/* News Preview Section */}
       <h2 className="section-title">news</h2>
       <div className="news-section">
         <div className="news-article">
-          <img
-            src={newsDrawingImg}
-            alt="Drawing of cars and characters"
-            className="news-image"
-          />
+          <img src={newsDrawingImg} alt="News 1" className="news-image" />
           <p className="news-description">
             Raw talent on the rise with RENEGADE, 100% hand drawn launching
             March 1st 2026
@@ -168,19 +171,21 @@ const HomePage = () => {
           <p className="news-date">December 21, 2025</p>
         </div>
         <div className="news-article">
-          <img
-            src={newsNinjaImg}
-            alt="Mark of Ninja character"
-            className="news-image"
-          />
+          <img src={newsNinjaImg} alt="News 2" className="news-image" />
           <p className="news-description">
-            First look at Mark of Ninja, which brings together the ideas of two
-            tops creators in the underground
+            First look at Mark of Ninja, bringing together top underground
+            creators
           </p>
           <p className="news-date">December 29, 2025</p>
         </div>
       </div>
-      <button className="more-news-button">More news</button>
+
+      {/* Navigation Button to News Page */}
+      <div className="news-btn-container">
+        <button className="more-news-button" onClick={() => navigate("/news")}>
+          More news
+        </button>
+      </div>
     </div>
   );
 };
