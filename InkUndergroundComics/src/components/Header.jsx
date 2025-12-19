@@ -1,5 +1,8 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "../styles/Header.css";
+
+// Assets
 import logo from "../assets/logo.png";
 import facebook from "../assets/facebook.jpg";
 import instagram from "../assets/instagram.jpg";
@@ -9,16 +12,36 @@ import youtube from "../assets/youtube.jpg";
 const SocialIcons = ({ className = "" }) => {
   return (
     <div className={`social-icons ${className}`}>
-      <a href="#" className="social-icon">
+      <a
+        href="https://instagram.com"
+        target="_blank"
+        rel="noreferrer"
+        className="social-icon"
+      >
         <img src={instagram} alt="Instagram" />
       </a>
-      <a href="#" className="social-icon">
+      <a
+        href="https://twitter.com"
+        target="_blank"
+        rel="noreferrer"
+        className="social-icon"
+      >
         <img src={twitter} alt="Twitter" />
       </a>
-      <a href="#" className="social-icon">
+      <a
+        href="https://facebook.com"
+        target="_blank"
+        rel="noreferrer"
+        className="social-icon"
+      >
         <img src={facebook} alt="Facebook" />
       </a>
-      <a href="#" className="social-icon">
+      <a
+        href="https://youtube.com"
+        target="_blank"
+        rel="noreferrer"
+        className="social-icon"
+      >
         <img src={youtube} alt="YouTube" />
       </a>
     </div>
@@ -38,42 +61,55 @@ const Header = () => {
     setIsMobileComicsDropdownOpen(!isMobileComicsDropdownOpen);
   };
 
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+    setIsMobileComicsDropdownOpen(false);
+  };
+
   return (
     <header className="header">
       <div className="header-container">
-        <div className="brand-logo">
-          <img src={logo} alt="Arrow" className="arrow-icon" />
+        <Link to="/" className="brand-logo" onClick={closeMenu}>
+          <img src={logo} alt="Ink Underground" className="arrow-icon" />
           <div className="brand-text">
             <span>INK</span>
             <span>UNDERGROUND</span>
             <span>COMICS</span>
           </div>
-        </div>
+        </Link>
 
+        {/* Desktop Navigation */}
         <nav className="nav-menu desktop-nav">
-          <a href="#" className="nav-link">
+          {/* ADDED: Home Link */}
+          <Link to="/" className="nav-link">
+            HOME
+          </Link>
+          <Link to="/characters" className="nav-link">
             CHARACTERS
-          </a>
-          <a href="#" className="nav-link">
-            NEW RELEASES
-          </a>
+          </Link>
+          <Link to="/news" className="nav-link">
+            NEWS
+          </Link>
           <div className="dropdown-container">
             <button className="dropdown-toggle">
               COMICS
               <span className="dropdown-arrow">▼</span>
             </button>
             <div className="dropdown-menu">
-              <a href="#" className="dropdown-item">
-                First Issue
-              </a>
-              <a href="#" className="dropdown-item">
+              <Link to="/comics" className="dropdown-item">
+                All Comics
+              </Link>
+              <Link to="/comics" className="dropdown-item">
                 New Releases
-              </a>
-              <a href="#" className="dropdown-item">
-                New Series
-              </a>
+              </Link>
+              <Link to="/comics" className="dropdown-item">
+                Character of the Month
+              </Link>
             </div>
           </div>
+          <Link to="/community" className="nav-link">
+            COMMUNITY
+          </Link>
           <a href="#" className="nav-link">
             MERCH
           </a>
@@ -86,48 +122,74 @@ const Header = () => {
           onClick={toggleMenu}
           aria-label="Toggle navigation menu"
         >
-          <span className="hamburger-line"></span>
-          <span className="hamburger-line"></span>
-          <span className="hamburger-line"></span>
+          <span className={`hamburger-line ${isMenuOpen ? "open" : ""}`}></span>
+          <span className={`hamburger-line ${isMenuOpen ? "open" : ""}`}></span>
+          <span className={`hamburger-line ${isMenuOpen ? "open" : ""}`}></span>
         </button>
       </div>
 
+      {/* Mobile Menu Overlay */}
       {isMenuOpen && (
         <div className="mobile-menu">
           <nav className="mobile-nav">
-            <a href="#" className="mobile-nav-link">
+            {/* ADDED: Home Link for Mobile */}
+            <Link to="/" className="mobile-nav-link" onClick={closeMenu}>
+              HOME
+            </Link>
+            <Link
+              to="/characters"
+              className="mobile-nav-link"
+              onClick={closeMenu}
+            >
               CHARACTERS
-            </a>
-            <a href="#" className="mobile-nav-link">
-              NEW RELEASES
-            </a>
+            </Link>
+            <Link to="/news" className="mobile-nav-link" onClick={closeMenu}>
+              NEWS
+            </Link>
+
             <div className="mobile-dropdown-container">
               <button
                 className="mobile-dropdown-toggle"
                 onClick={toggleMobileComicsDropdown}
               >
                 COMICS
-                <span className="dropdown-arrow">▼</span>
+                <span
+                  className={`dropdown-arrow ${
+                    isMobileComicsDropdownOpen ? "rotate" : ""
+                  }`}
+                >
+                  ▼
+                </span>
               </button>
               {isMobileComicsDropdownOpen && (
                 <div className="mobile-dropdown-menu">
-                  <a href="#" className="mobile-dropdown-item">
-                    First Issue
-                  </a>
-                  <a href="#" className="mobile-dropdown-item">
+                  <Link
+                    to="/comics"
+                    className="mobile-dropdown-item"
+                    onClick={closeMenu}
+                  >
+                    All Comics
+                  </Link>
+                  <Link
+                    to="/comics"
+                    className="mobile-dropdown-item"
+                    onClick={closeMenu}
+                  >
                     New Releases
-                  </a>
-                  <a href="#" className="mobile-dropdown-item">
-                    New Series
-                  </a>
+                  </Link>
                 </div>
               )}
             </div>
-            <a href="#" className="mobile-nav-link">
-              MERCH
-            </a>
-            <a href="#" className="mobile-nav-link">
+
+            <Link
+              to="/community"
+              className="mobile-nav-link"
+              onClick={closeMenu}
+            >
               COMMUNITY
+            </Link>
+            <a href="#" className="mobile-nav-link" onClick={closeMenu}>
+              MERCH
             </a>
           </nav>
 
