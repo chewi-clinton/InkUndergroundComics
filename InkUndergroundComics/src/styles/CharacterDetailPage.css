@@ -1,0 +1,157 @@
+@import url("https://fonts.googleapis.com/css2?family=Cabin+Condensed:wght@400;700;900&display=swap");
+
+.cdp-container {
+  font-family: "Cabin Condensed", sans-serif;
+  background-color: #ffffff;
+  width: 100%;
+  color: #000;
+}
+
+/* --- Breadcrumbs --- */
+.cdp-breadcrumbs {
+  padding: 20px 5%;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: #6a0dad; /* Purple theme */
+}
+
+.cdp-slash {
+  margin: 0 5px;
+  color: #ccc;
+}
+
+.cdp-current {
+  color: #000;
+}
+
+/* --- Profile Section --- */
+.cdp-profile-section {
+  display: flex;
+  padding: 0 5% 50px 5%;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.cdp-profile-image-container {
+  flex: 0 0 350px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.cdp-main-img {
+  width: 100%;
+  display: block;
+}
+
+.cdp-profile-info {
+  flex: 1;
+}
+
+.cdp-hero-name {
+  font-size: 4rem;
+  font-weight: 900;
+  margin: 0 0 20px 0;
+  line-height: 1;
+}
+
+.cdp-hero-bio {
+  font-size: 1.1rem;
+  line-height: 1.4;
+  color: #333;
+  font-weight: 400;
+}
+
+/* --- Facts Banner --- */
+.cdp-facts-banner {
+  background-color: #eeeeee; /* Light grey banner */
+  padding: 40px 5%;
+  margin-bottom: 50px;
+}
+
+.cdp-section-title {
+  font-size: 2.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin: 0 0 25px 0;
+}
+
+.cdp-fact-item {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+}
+
+.cdp-fact-item strong {
+  margin-right: 10px;
+}
+
+/* --- Related Characters --- */
+.cdp-related-section {
+  padding: 0 5% 80px 5%;
+}
+
+.cdp-related-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 columns like the image */
+  gap: 20px;
+}
+
+.cdp-related-card {
+  text-align: center;
+}
+
+.cdp-related-img-wrapper {
+  width: 100%;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.cdp-related-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.cdp-related-card:hover .cdp-related-img {
+  transform: scale(1.05);
+}
+
+.cdp-related-name {
+  font-size: 1.8rem;
+  font-weight: 900;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+/* --- Responsive Layout --- */
+@media (max-width: 1024px) {
+  .cdp-profile-section {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .cdp-profile-image-container {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .cdp-related-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .cdp-hero-name {
+    font-size: 2.5rem;
+  }
+
+  .cdp-section-title {
+    font-size: 2rem;
+  }
+
+  .cdp-related-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
