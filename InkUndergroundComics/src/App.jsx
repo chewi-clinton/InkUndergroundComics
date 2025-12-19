@@ -8,6 +8,8 @@ import CommunityPage from "./pages/CommunityPage";
 import NewsPage from "./pages/NewsPage";
 import "./App.css";
 import HomePage from "./pages/Home";
+import ComicDetailPage from "./pages/ComicDetailPage";
+import ComicOverviewPage from "./pages/ComicOverviewPage";
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
 
           {/* Page Routes */}
           <Route path="/news" element={<NewsPage />} />
+          <Route path="/comicdetail" element={<ComicDetailPage />} />
+          <Route path="/comicoverview" element={<ComicOverviewPage />} />
           <Route path="/characters" element={<CharacterPage />} />
           <Route path="/character-detail" element={<CharacterDetailPage />} />
           <Route path="/comics" element={<ComicPage />} />
