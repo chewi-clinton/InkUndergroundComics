@@ -1,13 +1,14 @@
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import Home from "./pages/Home";
+import Character from "./pages/CharacterPage";
 import "./App.css";
+import ComicPage from "./pages/ComicPage";
 
 function App() {
   return (
     <>
       <Header />
-      <Home />
+      <ComicPage />
       <Footer />
     </>
   );
