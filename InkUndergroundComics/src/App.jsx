@@ -24,10 +24,12 @@ function App() {
           <Route path="/news" element={<NewsPage />} />
           <Route path="/comicdetail" element={<ComicDetailPage />} />
           <Route path="/comicoverview" element={<ComicOverviewPage />} />
-          <Route path="/characters" element={<CharacterPage />} />
-          <Route path="/character-detail" element={<CharacterDetailPage />} />
           <Route path="/comics" element={<ComicPage />} />
           <Route path="/community" element={<CommunityPage />} />
+
+          {/* Character Routes */}
+          <Route path="/characters" element={<CharacterPage />} />
+          <Route path="/characters/:slug" element={<CharacterDetailPage />} />
 
           {/* Optional: Add a 404 Not Found redirect or component */}
           <Route path="*" element={<NewsPage />} />

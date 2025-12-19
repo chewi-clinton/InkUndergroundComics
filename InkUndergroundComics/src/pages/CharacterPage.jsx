@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/CharacterPage.css";
 
 // Reusing images from your HomePage code as placeholders
@@ -14,8 +15,9 @@ import newsNinjaImg from "../assets/twitter.jpg";
 // Data for the Hero Slider
 const SLIDES = [
   {
-    image: sliderImg1, // Placeholder for Nightwing
+    image: sliderImg1,
     title: "NIGHT WING",
+    slug: "nightwing",
     description:
       "Dick Grayson is a highly skilled vigilante who began his crime-fighting career as Batman's sidekick Robin before becoming the hero Nightwing and occasionally taking up the mantle of Batman himself.",
     buttonText: "GET TO KNOW NIGHT WING",
@@ -23,6 +25,7 @@ const SLIDES = [
   {
     image: sliderImg2,
     title: "BATMAN",
+    slug: "batman",
     description:
       "The Dark Knight of Gotham City. A symbol of fear to criminals and a beacon of hope to the innocent, protecting the city from the shadows.",
     buttonText: "GET TO KNOW BATMAN",
@@ -30,6 +33,7 @@ const SLIDES = [
   {
     image: sliderImg3,
     title: "SUPERMAN",
+    slug: "superman",
     description:
       "The Man of Steel. Born on Krypton and raised on Earth, he uses his immense powers to protect humanity and stand for truth and justice.",
     buttonText: "GET TO KNOW SUPERMAN",
@@ -38,20 +42,21 @@ const SLIDES = [
 
 // Data for the Grid (Using your images as placeholders)
 const HEROES = [
-  { id: 1, name: "DAREDEVIL", img: hellboyImg },
-  { id: 2, name: "CYCLOPS", img: supremePowerImg },
-  { id: 3, name: "LUKE CAGE", img: spawnImg },
-  { id: 4, name: "SWAMP THING", img: newsDrawingImg },
-  { id: 5, name: "TWO FACE", img: newsNinjaImg },
-  { id: 6, name: "SLADE", img: sliderImg1 },
-  { id: 7, name: "WEB SLINGER", img: sliderImg2 },
-  { id: 8, name: "BOOSTER GOLD", img: sliderImg3 },
+  { id: 1, name: "DAREDEVIL", slug: "daredevil", img: hellboyImg },
+  { id: 2, name: "CYCLOPS", slug: "cyclops", img: supremePowerImg },
+  { id: 3, name: "LUKE CAGE", slug: "luke-cage", img: spawnImg },
+  { id: 4, name: "SWAMP THING", slug: "swamp-thing", img: newsDrawingImg },
+  { id: 5, name: "TWO FACE", slug: "two-face", img: newsNinjaImg },
+  { id: 6, name: "SLADE", slug: "slade", img: sliderImg1 },
+  { id: 7, name: "WEB SLINGER", slug: "web-slinger", img: sliderImg2 },
+  { id: 8, name: "BOOSTER GOLD", slug: "booster-gold", img: sliderImg3 },
 ];
 
 const AUTO_SLIDE_INTERVAL = 5000;
 
 const CharacterPage = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const navigate = useNavigate();
 
   // Slider Logic
   useEffect(() => {
@@ -71,16 +76,25 @@ const CharacterPage = () => {
 
   const goToSlide = (index) => setCurrentIndex(index);
 
+  // Navigate to character detail page
+  const handleCharacterClick = (slug) => {
+    navigate(`/characters/${slug}`);
+  };
+
+  const handleSlideButtonClick = (slug) => {
+    navigate(`/characters/${slug}`);
+  };
+
   return (
     <div className="character-page">
       {/* --- Slider Section --- */}
       <div className="cp-slider-wrapper">
         {/* Navigation Arrows */}
         <button className="cp-nav-arrow left" onClick={prevSlide}>
-          <span className="arrow-icon">&#8592;</span> {/* Left Arrow */}
+          <span className="arrow-icon">&#8592;</span>
         </button>
         <button className="cp-nav-arrow right" onClick={nextSlide}>
-          <span className="arrow-icon">&#8594;</span> {/* Right Arrow */}
+          <span className="arrow-icon">&#8594;</span>
         </button>
 
         {/* The "A" Badge */}
@@ -97,7 +111,12 @@ const CharacterPage = () => {
                 <div className="cp-slide-content">
                   <h1 className="cp-hero-name">{slide.title}</h1>
                   <p className="cp-hero-desc">{slide.description}</p>
-                  <button className="cp-hero-btn">{slide.buttonText}</button>
+                  <button
+                    className="cp-hero-btn"
+                    onClick={() => handleSlideButtonClick(slide.slug)}
+                  >
+                    {slide.buttonText}
+                  </button>
                 </div>
 
                 {/* Image & Gradient */}
@@ -137,7 +156,12 @@ const CharacterPage = () => {
 
         <div className="cp-heroes-grid">
           {HEROES.map((hero) => (
-            <div className="cp-hero-card" key={hero.id}>
+            <div
+              className="cp-hero-card"
+              key={hero.id}
+              onClick={() => handleCharacterClick(hero.slug)}
+              style={{ cursor: "pointer" }}
+            >
               <div className="cp-hero-img-wrapper">
                 <img src={hero.img} alt={hero.name} className="cp-hero-img" />
               </div>
