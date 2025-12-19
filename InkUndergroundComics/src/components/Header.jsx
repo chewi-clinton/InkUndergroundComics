@@ -91,7 +91,7 @@ const Header = () => {
             COMMUNITY
           </Link>
           <a href="#" className="nav-link">
-            MERCH
+            COLLAB CORNER
           </a>
         </nav>
 
@@ -208,7 +208,7 @@ const Header = () => {
               COMMUNITY
             </Link>
             <a href="#" className="mobile-nav-link" onClick={closeMenu}>
-              MERCH
+              COLLAB CORNER
             </a>
           </nav>
 
