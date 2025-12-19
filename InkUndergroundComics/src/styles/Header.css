@@ -25,6 +25,9 @@
   width: 100%;
   box-shadow: 0 2px 5px var(--shadow);
   transition: background-color 0.3s ease;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .header-container {
@@ -335,7 +338,6 @@
     display: none;
   }
 
-  /* Hide header-actions on mobile */
   .header-actions {
     display: none;
   }
@@ -361,4 +363,19 @@
   .mobile-menu {
     display: none !important;
   }
+}
+
+/* --- ADDED: ACTIVE STATE PURPLE WITHOUT UNDERLINE --- */
+
+.nav-link.active,
+.dropdown-item.active,
+.mobile-nav-link.active,
+.mobile-dropdown-item.active {
+  color: var(--text-hover) !important;
+  font-weight: 700;
+}
+
+/* Ensure the hover transition still works on the active link */
+.nav-link.active:hover {
+  transform: translateY(-2px);
 }

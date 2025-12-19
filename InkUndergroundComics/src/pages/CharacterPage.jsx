@@ -89,17 +89,6 @@ const CharacterPage = () => {
     <div className="character-page">
       {/* --- Slider Section --- */}
       <div className="cp-slider-wrapper">
-        {/* Navigation Arrows */}
-        <button className="cp-nav-arrow left" onClick={prevSlide}>
-          <span className="arrow-icon">&#8592;</span>
-        </button>
-        <button className="cp-nav-arrow right" onClick={nextSlide}>
-          <span className="arrow-icon">&#8594;</span>
-        </button>
-
-        {/* The "A" Badge */}
-        <div className="cp-hero-badge">A</div>
-
         <div className="cp-slider-container">
           <div
             className="cp-slider-track"

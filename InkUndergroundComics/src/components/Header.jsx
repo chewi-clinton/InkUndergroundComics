@@ -1,6 +1,5 @@
-// Header.jsx - Updated with Theme Toggle in Mobile Menu
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import "../styles/Header.css";
 
 // Assets
@@ -34,14 +33,9 @@ const Header = () => {
     }
   };
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const toggleMobileComicsDropdown = () => {
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const toggleMobileComicsDropdown = () =>
     setIsMobileComicsDropdownOpen(!isMobileComicsDropdownOpen);
-  };
-
   const closeMenu = () => {
     setIsMenuOpen(false);
     setIsMobileComicsDropdownOpen(false);
@@ -61,35 +55,41 @@ const Header = () => {
 
         {/* Desktop Navigation */}
         <nav className="nav-menu desktop-nav">
-          <Link to="/" className="nav-link">
+          <NavLink to="/" className="nav-link">
             HOME
-          </Link>
-          <Link to="/characters" className="nav-link">
+          </NavLink>
+          <NavLink to="/characters" className="nav-link">
             CHARACTERS
-          </Link>
-          <Link to="/news" className="nav-link">
+          </NavLink>
+          <NavLink to="/news" className="nav-link">
             NEWS
-          </Link>
+          </NavLink>
+
           <div className="dropdown-container">
             <button className="dropdown-toggle">
-              COMICS
-              <span className="dropdown-arrow">▼</span>
+              COMICS <span className="dropdown-arrow">▼</span>
             </button>
             <div className="dropdown-menu">
-              <Link to="/comics" className="dropdown-item">
+              <NavLink
+                to="/comics"
+                className="dropdown-item"
+                onClick={closeMenu}
+              >
                 All Comics
-              </Link>
-              <Link to="/comics" className="dropdown-item">
+              </NavLink>
+              <NavLink
+                to="/new-releases"
+                className="dropdown-item"
+                onClick={closeMenu}
+              >
                 New Releases
-              </Link>
-              <Link to="/comics" className="dropdown-item">
-                Character of the Month
-              </Link>
+              </NavLink>
             </div>
           </div>
-          <Link to="/community" className="nav-link">
+
+          <NavLink to="/community" className="nav-link">
             COMMUNITY
-          </Link>
+          </NavLink>
           <a href="#" className="nav-link">
             COLLAB CORNER
           </a>
@@ -104,8 +104,8 @@ const Header = () => {
           >
             {isDarkMode ? (
               <svg
-                width="24"
-                height="24"
+                width="20"
+                height="20"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -123,8 +123,8 @@ const Header = () => {
               </svg>
             ) : (
               <svg
-                width="24"
-                height="24"
+                width="20"
+                height="20"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -136,11 +136,10 @@ const Header = () => {
           </button>
         </div>
 
-        {/* Hamburger Menu Button */}
         <button
           className="hamburger-menu"
           onClick={toggleMenu}
-          aria-label="Toggle navigation menu"
+          aria-label="Toggle navigation"
         >
           <span className={`hamburger-line ${isMenuOpen ? "open" : ""}`}></span>
           <span className={`hamburger-line ${isMenuOpen ? "open" : ""}`}></span>
@@ -148,30 +147,30 @@ const Header = () => {
         </button>
       </div>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu */}
       {isMenuOpen && (
         <div className="mobile-menu">
           <nav className="mobile-nav">
-            <Link to="/" className="mobile-nav-link" onClick={closeMenu}>
+            <NavLink to="/" className="mobile-nav-link" onClick={closeMenu}>
               HOME
-            </Link>
-            <Link
+            </NavLink>
+            <NavLink
               to="/characters"
               className="mobile-nav-link"
               onClick={closeMenu}
             >
               CHARACTERS
-            </Link>
-            <Link to="/news" className="mobile-nav-link" onClick={closeMenu}>
+            </NavLink>
+            <NavLink to="/news" className="mobile-nav-link" onClick={closeMenu}>
               NEWS
-            </Link>
+            </NavLink>
 
             <div className="mobile-dropdown-container">
               <button
                 className="mobile-dropdown-toggle"
                 onClick={toggleMobileComicsDropdown}
               >
-                COMICS
+                COMICS{" "}
                 <span
                   className={`dropdown-arrow ${
                     isMobileComicsDropdownOpen ? "rotate" : ""
@@ -182,74 +181,29 @@ const Header = () => {
               </button>
               {isMobileComicsDropdownOpen && (
                 <div className="mobile-dropdown-menu">
-                  <Link
+                  <NavLink
                     to="/comics"
                     className="mobile-dropdown-item"
                     onClick={closeMenu}
                   >
                     All Comics
-                  </Link>
-                  <Link
-                    to="/comics"
-                    className="mobile-dropdown-item"
-                    onClick={closeMenu}
-                  >
-                    New Releases
-                  </Link>
+                  </NavLink>
                 </div>
               )}
             </div>
 
-            <Link
+            <NavLink
               to="/community"
               className="mobile-nav-link"
               onClick={closeMenu}
             >
               COMMUNITY
-            </Link>
-            <a href="#" className="mobile-nav-link" onClick={closeMenu}>
-              COLLAB CORNER
-            </a>
+            </NavLink>
           </nav>
 
-          {/* Mobile Theme Toggle */}
           <div className="mobile-theme-toggle-container">
-            <button
-              className="theme-toggle"
-              onClick={toggleTheme}
-              aria-label="Toggle theme"
-            >
-              {isDarkMode ? (
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <circle cx="12" cy="12" r="5" />
-                  <line x1="12" y1="1" x2="12" y2="3" />
-                  <line x1="12" y1="21" x2="12" y2="23" />
-                  <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-                  <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-                  <line x1="1" y1="12" x2="3" y2="12" />
-                  <line x1="21" y1="12" x2="23" y2="12" />
-                  <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-                  <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-                </svg>
-              ) : (
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-                </svg>
-              )}
+            <button className="theme-toggle" onClick={toggleTheme}>
+              {isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
             </button>
           </div>
         </div>
