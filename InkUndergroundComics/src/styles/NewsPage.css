@@ -1,0 +1,135 @@
+@import url("https://fonts.googleapis.com/css2?family=Cabin+Condensed:wght@400;700;900&display=swap");
+
+.np-container {
+  font-family: "Cabin Condensed", sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 5%;
+  background-color: #fff;
+}
+
+/* Breadcrumbs */
+.np-breadcrumbs {
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: #6a0dad;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.np-slash {
+  margin: 0 8px;
+  color: #ccc;
+}
+
+.np-current {
+  color: #333;
+}
+
+.np-main-title {
+  font-size: 3rem;
+  font-weight: 900;
+  margin-bottom: 40px;
+  border-bottom: 4px solid #000;
+  display: inline-block;
+  line-height: 1;
+}
+
+/* News List Logic */
+.np-list {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.np-item {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+}
+
+/* Forcing all images to be the same size and align correctly */
+.np-image-wrapper {
+  flex: 0 0 300px; /* Fixed width for alignment */
+  height: 200px; /* Fixed height for uniformity */
+  overflow: hidden;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+}
+
+.np-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures images fill the box without stretching */
+  transition: transform 0.3s ease;
+}
+
+.np-item:hover .np-img {
+  transform: scale(1.05);
+}
+
+/* Text Content Alignment */
+.np-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.np-date {
+  font-size: 0.9rem;
+  color: #888;
+  margin-bottom: 8px;
+}
+
+.np-item-title {
+  font-size: 1.8rem;
+  font-weight: 900;
+  margin: 0 0 12px 0;
+  line-height: 1.1;
+  color: #000;
+  text-transform: uppercase;
+}
+
+.np-description {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 15px;
+  max-width: 800px;
+}
+
+.np-read-more {
+  align-self: flex-start;
+  background: none;
+  border: none;
+  color: #6a0dad;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+  font-family: inherit;
+}
+
+.np-read-more:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .np-item {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .np-image-wrapper {
+    width: 100%;
+    flex: none;
+    height: 250px;
+  }
+
+  .np-item-title {
+    font-size: 1.5rem;
+  }
+}

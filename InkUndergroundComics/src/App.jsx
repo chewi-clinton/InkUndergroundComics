@@ -5,12 +5,13 @@ import "./App.css";
 import ComicPage from "./pages/ComicPage";
 import CharacterDetailPage from "./pages/CharacterDetailPage";
 import CommunityPage from "./pages/CommunityPage";
+import NewsPage from "./pages/NewsPage";
 
 function App() {
   return (
     <>
       <Header />
-      <CommunityPage />
+      <NewsPage />
       <Footer />
     </>
   );
