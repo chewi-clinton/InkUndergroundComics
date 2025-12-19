@@ -1,0 +1,322 @@
+@import url("https://fonts.googleapis.com/css2?family=Cabin+Condensed:wght@400;700;900&display=swap");
+
+.character-page {
+  font-family: "Cabin Condensed", sans-serif;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  overflow-x: hidden;
+}
+
+/* --- Slider Styles --- */
+.cp-slider-wrapper {
+  position: relative;
+  width: 100%;
+  height: 500px; /* Adjust height based on preference */
+  overflow: hidden;
+}
+
+.cp-slider-container {
+  width: 100%;
+  height: 100%;
+}
+
+.cp-slider-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  height: 100%;
+  width: 100%;
+}
+
+.cp-slide {
+  min-width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.cp-slide-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Gradient overlay to make text readable */
+.cp-image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0.6) 40%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  z-index: 1;
+}
+
+/* Text Content over Slide */
+.cp-slide-content {
+  position: absolute;
+  top: 50%;
+  left: 8%;
+  transform: translateY(-50%);
+  z-index: 5;
+  color: white;
+  max-width: 500px;
+  text-align: left;
+}
+
+.cp-hero-name {
+  font-size: 4rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin: 0 0 15px 0;
+  line-height: 0.9;
+}
+
+.cp-hero-desc {
+  font-size: 1.1rem;
+  line-height: 1.4;
+  margin-bottom: 30px;
+  font-weight: 400;
+}
+
+.cp-hero-btn {
+  background-color: #6a0dad; /* Purple */
+  color: white;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 25px; /* Pill shape */
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.3s;
+}
+
+.cp-hero-btn:hover {
+  background-color: #8b2be2;
+}
+
+/* Badge (Yellow A) */
+.cp-hero-badge {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 60px;
+  background-color: #f1c40f; /* Yellow */
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 1.8rem;
+  color: #333;
+  z-index: 10;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Navigation Arrows */
+.cp-nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+  background: white;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.cp-nav-arrow:hover {
+  opacity: 0.8;
+}
+
+.cp-nav-arrow.left {
+  left: 20px;
+}
+.cp-nav-arrow.right {
+  right: 20px;
+}
+
+.arrow-icon {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #000;
+  line-height: 1;
+}
+
+/* Slider Dots */
+.cp-slider-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  z-index: 10;
+}
+
+.cp-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.4);
+  border: none;
+  cursor: pointer;
+}
+
+.cp-dot.active {
+  background-color: #6a0dad;
+  transform: scale(1.2);
+}
+
+/* --- Breadcrumbs --- */
+.cp-breadcrumbs {
+  padding: 20px 4%;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #6a0dad;
+}
+
+.crumb-link {
+  color: #6a0dad;
+  cursor: pointer;
+}
+
+.crumb-slash {
+  margin: 0 5px;
+  color: #999;
+}
+
+.crumb-current {
+  color: #333;
+}
+
+/* --- Grid Section --- */
+.cp-content-container {
+  padding: 0 4% 60px 4%;
+}
+
+.cp-section-title {
+  font-size: 2.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin: 0 0 30px 0;
+  text-align: left;
+  color: #000;
+}
+
+.cp-heroes-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 Columns */
+  gap: 20px;
+}
+
+.cp-hero-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cp-hero-img-wrapper {
+  width: 100%;
+  aspect-ratio: 2/3; /* Standard comic book ratio */
+  overflow: hidden;
+  margin-bottom: 10px;
+  background-color: #eee;
+}
+
+.cp-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.cp-hero-card:hover .cp-hero-img {
+  transform: scale(1.05);
+}
+
+.cp-hero-card-name {
+  font-size: 1.6rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin: 0;
+  color: #000;
+  text-align: center;
+}
+
+/* --- Responsive --- */
+@media (max-width: 1024px) {
+  .cp-hero-name {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .cp-heroes-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
+  }
+
+  .cp-slider-wrapper {
+    height: 400px;
+  }
+
+  .cp-slide-content {
+    width: 80%;
+    left: 10%;
+    text-align: center;
+    transform: translateY(-50%) translateX(0); /* Reset positioning for center align */
+  }
+
+  /* Center text on mobile/tablet */
+  .cp-slide-content {
+    left: 50%;
+    transform: translate(-50%, -50%);
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Make gradient darker all over on mobile for readability */
+  .cp-image-overlay {
+    background: rgba(0, 0, 0, 0.5);
+  }
+}
+
+@media (max-width: 480px) {
+  .cp-heroes-grid {
+    grid-template-columns: 1fr; /* 1 column on phones */
+  }
+
+  .cp-hero-name {
+    font-size: 2rem;
+  }
+
+  .cp-section-title {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
+  .cp-nav-arrow {
+    width: 35px;
+    height: 35px;
+  }
+}
